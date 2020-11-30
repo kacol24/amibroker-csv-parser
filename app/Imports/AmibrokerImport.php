@@ -11,22 +11,8 @@ class AmibrokerImport implements ToCollection, WithHeadingRow
 {
     use Importable;
 
-    /**
-     * @param Collection $collection
-     */
     public function collection(Collection $collection)
     {
-        $export = collect();
-        foreach ($collection as $row) {
-            $ticker = $row['ticker'];
-
-            if (substr($ticker, strlen($ticker), strlen($ticker) - 3) != '.JK') {
-                $row['ticker'] .= '.JK';
-            }
-
-            $export->push($row);
-        }
-
-        dd($export);
+        return $collection;
     }
 }
