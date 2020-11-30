@@ -22,43 +22,29 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-                <div class="mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200">
-                            <form action="{{ route('import') }}" enctype="multipart/form-data" method="post">
-                                @csrf
-                                <div class="flex justify-between" style="display: flex;justify-content: space-between;">
-                                    <div>
-                                        <label for="file">
-                                            File Upload
-                                        </label>
-                                        <input type="file" name="excel" id="file" class="flex">
-                                    </div>
-                                    <div>
-                                        <button type="submit"
-                                                class="px-6 py-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200">
-                                            Submit
-                                        </button>
-                                    </div>
+            <div class="mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <form action="{{ route('import') }}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            <div class="flex justify-between" style="display: flex;justify-content: space-between;">
+                                <div>
+                                    <label for="file">
+                                        File Upload
+                                    </label>
+                                    <input type="file" name="excel" id="file" class="flex">
                                 </div>
-                            </form>
-                        </div>
+                                <div>
+                                    <button type="submit"
+                                            class="px-6 py-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
         </div>
     </body>
 </html>
