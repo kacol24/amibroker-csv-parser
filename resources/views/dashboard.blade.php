@@ -16,7 +16,7 @@
                                 <label for="file">
                                     File Upload
                                 </label>
-                                <input type="file" name="file" id="file" class="block">
+                                <input type="file" name="excel" id="file" class="block">
                             </div>
                             <div>
                                 <button type="submit"
