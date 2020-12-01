@@ -51,14 +51,4 @@ class AmibrokerExport implements FromCollection, WithHeadings
             return $value;
         }, $rows);
     }
-
-    //public function map($row): array
-    //{
-    //    $ticker = $row['ticker'];
-    //    dd($ticker);
-    //
-    //    if (substr($ticker, strlen($ticker), strlen($ticker) - 3) != '.JK') {
-    //        $row['ticker'] .= '.JK';
-    //    }
-    //}
 }
