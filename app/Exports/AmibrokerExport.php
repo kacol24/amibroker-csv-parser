@@ -8,8 +8,9 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSettings
+class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSettings, WithMapping
 {
     use Exportable;
 
@@ -31,8 +32,8 @@ class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSett
     public function headings(): array
     {
         return [
-            '<date>',
             '<ticker>',
+            '<date>',
             '<open>',
             '<high>',
             '<low>',
@@ -60,6 +61,19 @@ class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSett
     {
         return [
             'enclosure' => '',
+        ];
+    }
+
+    public function map($row): array
+    {
+        return [
+            $row['ticker'],
+            $row['date'],
+            $row['open'],
+            $row['high'],
+            $row['low'],
+            $row['close'],
+            $row['volume'],
         ];
     }
 }
