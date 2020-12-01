@@ -5,9 +5,10 @@ namespace App\Exports;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class AmibrokerExport implements FromCollection, WithHeadings
+class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSettings
 {
     use Exportable;
 
@@ -50,5 +51,12 @@ class AmibrokerExport implements FromCollection, WithHeadings
 
             return $value;
         }, $rows);
+    }
+
+    public function getCsvSettings(): array
+    {
+        return [
+            'enclosure' => '',
+        ];
     }
 }
