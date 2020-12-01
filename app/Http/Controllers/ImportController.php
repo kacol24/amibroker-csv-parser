@@ -17,6 +17,6 @@ class ImportController extends Controller
         $collection = (new AmibrokerImport)->toCollection($request->file('excel'), null, Excel::CSV);
 
         return (new AmibrokerExport($collection->first()))
-            ->download($filename . '.csv');
+            ->download($filename . '.csv', Excel::CSV);
     }
 }
