@@ -2,7 +2,6 @@
 
 namespace App\Exports;
 
-use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -46,12 +45,10 @@ class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSett
     {
         return array_map(function ($value) {
             $ticker = explode('.', $value['ticker']);
-            
-            if (!isset($ticker[1]) || $ticker[1] != 'JK') {
+
+            if (! isset($ticker[1]) || $ticker[1] != 'JK') {
                 $value['ticker'] .= '.JK';
             }
-
-            $value['date'] = Carbon::parse($value['date'])->format('Y/m/d');
 
             return $value;
         }, $rows);
