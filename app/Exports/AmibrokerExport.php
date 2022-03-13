@@ -31,8 +31,8 @@ class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSett
     public function headings(): array
     {
         return [
-            '<ticker>',
             '<date>',
+            '<ticker>',
             '<open>',
             '<high>',
             '<low>',
@@ -64,8 +64,8 @@ class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSett
     public function map($row): array
     {
         return [
-            $row['ticker'],
             $row['date'],
+            $row['ticker'],
             $row['open'],
             $row['high'],
             $row['low'],
