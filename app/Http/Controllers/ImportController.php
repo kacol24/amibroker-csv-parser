@@ -14,7 +14,7 @@ class ImportController extends Controller
         $filename = $request->file('excel')->getClientOriginalName();
         $filename = pathinfo($filename, PATHINFO_FILENAME);
 
-        $collection = (new AmibrokerImport)->toCollection($request->file('excel'), null, Excel::CSV);
+        $collection = (new AmibrokerImport)->toCollection($request->file('excel'));
 
         return (new AmibrokerExport($collection->first()))
             ->download($filename . '.csv', Excel::CSV);
