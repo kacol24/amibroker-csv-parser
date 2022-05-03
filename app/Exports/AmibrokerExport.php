@@ -44,6 +44,12 @@ class AmibrokerExport implements FromCollection, WithHeadings, WithCustomCsvSett
     public function prepareRows($rows)
     {
         return array_map(function ($value) {
+            if ($value['ticker'] == 'IHSG') {
+                $value['ticker'] = '^JKSE';
+
+                return $value;
+            }
+
             $ticker = explode('.', $value['ticker']);
 
             if (! isset($ticker[1]) || $ticker[1] != 'JK') {
